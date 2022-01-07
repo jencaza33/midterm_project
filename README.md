@@ -1,4 +1,4 @@
-LHL Node Skeleton
+Lighthouse Midterm Project Group 9
 =========
 
 ## Project Setup
