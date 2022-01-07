@@ -1,5 +1,5 @@
 Lighthouse Midterm Project Group 9
-=========
+=====================
 
 ## Project Setup
 
