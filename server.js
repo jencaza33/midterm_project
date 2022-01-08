@@ -47,6 +47,14 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
+
+app.post("/signup", (req, res) => {
+  console.log("User posted to signup");
+  res.status(301).redirect("/");
+});
 
 app.get("/", (req, res) => {
   res.render("index");
