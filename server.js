@@ -48,7 +48,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("_signup");
 });
 
 app.post("/signup", (req, res) => {
