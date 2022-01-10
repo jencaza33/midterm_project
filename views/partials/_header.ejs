@@ -1,7 +1,16 @@
+<link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 <header>
   <nav>
     <ul>
-      <li>1</li>
+      <% if(user) { %>
+        <!-- User Is Authenticated -->
+        <%= user.name %>
+      <% } else { %>
+        <%= user.name %>
+        <a href="Login" alt="login">Login</a>
+      <% }%>
     </ul>
+    <h1>BURGERZ</h1>
+    <i class="fas fa-shopping-cart"></i>
   </nav>
 </header>
