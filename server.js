@@ -35,14 +35,16 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+//import the routers
+const userRouter = require("./routes/user-router");
+const homepageRouter = require('./routes/homepage-router')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
+//pass the routers to express as middleware
+app.use("/users", userRouter);
+app.use("/", homepageRouter);
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -54,10 +56,6 @@ app.get("/signup", (req, res) => {
 app.post("/signup", (req, res) => {
   console.log("User posted to signup");
   res.status(301).redirect("/");
-});
-
-app.get("/", (req, res) => {
-  res.render("index");
 });
 
 app.listen(PORT, () => {
