@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Rancho|Quicksand:400,700&display=swap" rel="stylesheet">
 <header>
   <nav>
-      <% if(user.id) { %>
+      <% if(locals.users) { %>
         <!-- User Is Authenticated -->
         <form method='POST' action='/logout' class='form-inline my-2 my-lg-0'>
           <span class='mr-2'><%= user.name %></span>
