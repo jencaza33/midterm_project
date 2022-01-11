@@ -37,7 +37,8 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 //import the routers
 const userRouter = require("./routes/user-router");
-const homepageRouter = require('./routes/homepage-router')
+const homepageRouter = require('./routes/homepage-router');
+const menuRouter = require('./routes/menu-router');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -45,6 +46,8 @@ const homepageRouter = require('./routes/homepage-router')
 //pass the routers to express as middleware
 app.use("/users", userRouter);
 app.use("/", homepageRouter);
+app.use("/menu", menuRouter);
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
