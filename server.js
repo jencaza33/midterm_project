@@ -35,14 +35,30 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+//import the routers
+const userRouter = require("./routes/user-router");
+const homepageRouter = require('./routes/homepage-router');
+const menuRouter = require('./routes/menu-router');
+const cartRouter = require('./routes/cart-router');
+const orderRouter = require('./routes/order-router');
+const adminRouter = require('./routes/admin-router');
+const loginRouter = require('./routes/login-router');
+
+
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
+//pass the routers to express as middleware
+app.use("/users", userRouter(db));
+app.use("/", homepageRouter(db));
+app.use("/menu", menuRouter(db));
+app.use("/cart", cartRouter(db));
+app.use("/order", orderRouter(db));
+app.use("/admin", adminRouter(db));
+app.use("/login", loginRouter(db));
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -54,10 +70,6 @@ app.get("/signup", (req, res) => {
 app.post("/signup", (req, res) => {
   console.log("User posted to signup");
   res.status(301).redirect("/");
-});
-
-app.get("/", (req, res) => {
-  res.render("index");
 });
 
 app.listen(PORT, () => {

@@ -1,8 +1,7 @@
--- Users table seeds here (Example)
-INSERT INTO users (name,phone,email,password,staff)
+INSERT INTO users (name, phone, email, password, staff)
 VALUES
 ('Alice','6230092145','alice1973@gmail.com','$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.','true');
-INSERT INTO users (name,phone,email,password,staff)
+INSERT INTO users (name, phone, email, password, staff)
 VALUES
 ('Sebastian','5230092145','seb_james@gmail.com','$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
 ('Charles','6450092145','Charles123@gmail.com','$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
