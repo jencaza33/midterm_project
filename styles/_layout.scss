@@ -1,38 +1,21 @@
-// See: https://sass-lang.com/
-$header-height: 80px;
-$nav-color: rgb(20, 102, 78);
+// Basic global layout stuff
+
+$nav-height: 80px;
+$color-yellow:#180d7a;
+$background-color: #FFF5E6;
+
 body {
-  background-image: url("/public/src/images/burger1.jpeg");
-  h1 {
-    color: #244751;
+  background-color: $background-color;
+
+  // h1 {
+  //   color: #244751;
+  // }
+
+  :focus {
+    outline: 0;
   }
 }
+
 main {
-  padding-top: $header-height;
-}
-div.food-item {
-  display: grid;
-  grid-template-areas:
-    "photo title title"
-    "photo description description"
-    "photo . price"
-    "restriction . button";
-  grid-template-columns: 33% auto 33%;
-  grid-template-rows: 25% 25% 25% 25%;
-  img {
-    grid-area: photo;
-    height: 300px;
-  }
-  h1 {
-    grid-area: title;
-  }
-  p.description {
-    grid-area: description;
-  }
-  p.price {
-    grid-area: price;
-  }
-  button {
-    grid-area: button;
-  }
+  padding-top: $nav-height;
 }

@@ -1,0 +1,89 @@
+// For orders.ejs
+
+.customer-order-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-family: $logo-font;
+    color: $color-dark-blue;
+  }
+}
+
+.brief-summary {
+  margin-top: 1rem;
+  width:65%;
+  border: 1px solid black;
+  border-bottom: none;
+  font-family: $secondary-font;
+  text-align: center;
+  font-family: $printer-font;
+  background-color: $color-paper;
+  color: $color-retro-receipt;
+  background-image: $crimpled-texture;
+  box-shadow: 0 2px 2px #362A21;
+}
+
+.expanded-order {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  font-family: $logo-font;
+  color: $color-dark-blue;
+
+}
+.qnty {
+  width: 10%;
+}
+
+table {
+  width: 90%;
+  margin-bottom: 1rem;
+  // border: 1px solid $color-dark;
+}
+
+table, tr, td {
+  border: 1px solid $color-table-border;
+}
+
+.tax, .subtotal, .total {
+  text-align: right;
+  font-family: Arial, Helvetica, sans-serif;
+  color: $color-dark-blue;
+}
+}
+
+.centered-handwriting {
+  text-align: center;
+}
+
+div.expanded-order {
+    width: 65%;
+    font-family: $handwriting-font;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-paper;
+    background-image: $paper-texture;
+    border: 1px solid black;
+    border-top: none;
+    box-shadow: 0 2px 2px #362A21;
+
+    .table-heads {
+      font-family: Arial, Helvetica, sans-serif;
+      color: $color-dark-blue;
+    }
+}
+
+.unfolded, div.expanded-order.unfolded {
+  background-image: $paper-texture;
+}

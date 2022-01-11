@@ -1,20 +1,65 @@
-<link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Rancho|Quicksand:400,700&display=swap" rel="stylesheet">
 <header>
-  <nav>
-      <% if(locals.users) { %>
-        <!-- User Is Authenticated -->
-        <form method='POST' action='/logout' class='form-inline my-2 my-lg-0'>
-          <span class='mr-2'><%= user.name %></span>
-          <button type='submit' class='btn btn-outline-dark my-2 my-sm-0'>Logout</button>
+  <nav  class="navbar navbar-light light-blue lighten-4">
+    <!-- User Is Authenticated -->
+    <% if(users.id) { %>
+      <!-- Collapse button -->
+      <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+        aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="dark-blue-text">
+          <i class="fas fa-hotdog fa-1x"></i>
+        </span>
+      </button>
+    <% } else { %>
+      <a id="login" href="/login" alt="login">Login</a>
+    <% } %>
+
+    <div>
+      <!-- User Is Authenticated AND is NOT an admin-->
+      <% if(users.id && !users.admin) { %>
+        <form method='POST' action='/' data-cart="">
+          <div class="cart-icon">
+            <div class="price-counter"></div>
+            <input id="cart" name="cart" type="hidden" value="">
+            <button type="submit" id="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+          </div>
         </form>
-      <% } else { %>
-        <a href="Login" alt="login">Login</a>
-      <% }%>
-    <h1>BURGERZ</h1>
-    <form method='POST' action='/' data-cart="">
-      <input name="cart" type="hidden" value="">
-      <button type="submit" id="checkout-btn"><i class="fas fa-shopping-cart"></i></button>
-    </form>
+      <% } %>
+    </div>
+
+    <% if(users.id) { %>
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class='mr-2 user-profile' href="/profile"><%= user.name %></a>
+          </li>
+          <% if(users.admin) { %>
+            <li class="nav-item active">
+              <span class='mr-2'><a href="/" alt="list of menu items">Food items</a></span>
+            </li>
+            <li class="nav-item active">
+                <span class='mr-2'><a href="/owners/<%= user.id %>/orders" alt="orders summary">Active Orders</a></span>
+            </li>
+            <li class="nav-item active">
+                <span class='mr-2'><a href="/owners/<%= user.id %>/orders?section=history" alt="orders summary">Order History</a></span>
+            </li>
+          <% } %>
+          <% if(!users.admin) { %>
+            <li class="nav-item active">
+                <span class='mr-2'><a href="/orders" alt="orders history">Order History</a></span>
+            </li>
+          <% } %>
+          <li class="nav-item">
+            <form method='POST' action='/logout' class='form-inline my-2 my-lg-0'>
+              <button type='submit' >Logout</button>
+            </form>
+          </li>
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- Collapsible content -->
+    <% } %>
   </nav>
 </header>
+<a href="/" class="logo"><h1>BURGERZ</h1></a>

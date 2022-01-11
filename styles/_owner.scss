@@ -1,0 +1,167 @@
+// For owner_active.ejs
+
+.active-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-box {
+  border: 1px solid black;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+}
+
+.order-essentials {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.customer-essentials {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: right;
+  // border-bottom: 1px solid black;
+}
+
+ .order-items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  .comments {
+    width: 75%;
+    text-align: center;
+  }
+  .must-see {
+    font-weight: bold;
+    font-size: 2rem;
+
+
+ }
+
+ .ordered-food {
+   padding-left: 3rem;
+ }
+ .order-table {
+   margin: .5rem;
+   width: 75%;
+   border: 1px solid black;
+
+
+ th {
+   font-weight: normal;
+   border-bottom: 1px solid black;
+ }
+
+
+}
+
+.kitchen-buttons {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .fulfill-btn, .accept-btn{
+    background-color: lightgreen;
+    width: 90%;
+    height: 3rem;
+    margin-bottom: .5rem;
+  }
+
+  .cancel-btn {
+    width: 60%;
+    height: 2rem;
+  }
+
+  .timer-input {
+    height: 5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    border: 2px solid black;
+  }
+}
+.status-new {
+  background-color: $color-orders-active;
+}
+
+.status-processing {
+  background-color: $color-orders-processing;
+}
+
+.status-cancel {
+  background-color: $color-orders-cancel;
+}
+
+.status-fulfilled {
+  background-color: orange;
+}
+ }
+
+
+ #owners-history {
+   width: 90%;
+   margin: auto;
+
+   .status-declined {
+    color: $color-orders-cancel;
+  }
+
+  .status-fulfilled {
+    color: orange;
+  }
+
+   h1 {
+     text-align: center;
+     padding: 3rem;
+   }
+
+   div.card-header {
+    display: inline-grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-areas: "order-id name date status";
+
+    align-items: center;
+
+    h2,
+    p {
+      display: inline-block;
+    }
+
+    .order-id {
+      grid-area: order-id;
+    }
+
+    .customer-name {
+      grid-area: name;
+    }
+
+    .order-date {
+      grid-area: date;
+    }
+
+    .order-status {
+      grid-area: status;
+      justify-self: end;
+    }
+   }
+
+   .order-table {
+    width: 70%;
+
+    align-self: center;
+
+   }
+
+ }

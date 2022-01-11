@@ -1,28 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <script type="text/javascript" src="/scripts/app.js"></script>
+<head>
+  <title>BURGERZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
 
 
-  </head>
+  <script type="text/javascript" src="/vendor/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
-  <body>
-    <% include ./partials/_header %>
-    <h1>Menu</h1>
-    <ul>
-      <li>first burger</li>
-      <img width="200px" height="auto" src="src/images/burger1.jpg" alt="">
-      <article>this is a burger</article>
-      <li>second burger</li>
-    </ul>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Font Awesome External JS-->
+  <script src="https://kit.fontawesome.com/1452ad3553.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <% include ./partials/_header %>
+  <main>
+    <div class="menu-params">
+      <h1>Menu</h1>
+      <div>
+        <i id="burger" class="fas fa-burger"> burger</i>
+
+        <p>Please log-in to order.</p>
+      <% } %>
+    </div>
+    <section id="food-list">
+      <% for (let food in foods) { %>
+      <div class="food-item">
+        <div class="photos">
+          <img src="<%= foods[food].picture_url %>" alt="">
+        </div>
+        <div class="namePriceIcons">
+          <h1><%= foods[food].name %></h1>
+          <p class="description"><%= foods[food].description %></p>
+          <div class="dietary-restrictions">
+            <% if(foods[food].vegan) { %></li>
+              <i class="fas fa-carrot"></i>
+            <% } %>
+            <% if(foods[food].vegetarian) { %></li>
+              <i class="fas fa-seedling"></i>
+            <% } %>
+            <% if(foods[food].gluten_free) { %></li>
+              <img class="gluten-free" src="/src/images/icons/gluten-free.svg">
+              <!-- <i class="fas fa-bread-slice"></i> -->
+            <% } %>
+          </div>
+        </div>
+        <div class="priceAndBuy">
+          <p class="price"><%= foods[food].price /100 %>$</p>
+          <% if(user.id && !user.admin) { %>
+            <button id="buy-button" type="submit" value="<%= foods[food].id %>" class="add-food-btn">Dog-me!</button>
+          <% } %>
+        </div>
+      </div>
+      <% } %>
+    </section>
+  </main>
+  <% include ./partials/_footer %>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </html>

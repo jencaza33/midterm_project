@@ -1,23 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <title>BURGERZ - Orders</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
 
-  <body>
-    <% include ./partials/_header %>
-    <h1>orders</h1>
-    <input type="text"><br>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/vendor/jquery.timeago.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- Font Awesome External JS-->
+  <script src="https://kit.fontawesome.com/1452ad3553.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <% include ./partials/_header %>
+  <main class="customer-order-history">
+    <h1>Order History</h1>
+
+    <% for (const order of structuredOrders) { %>
+      <div class ="brief-summary">
+        <p><time class="timeago" datetime="<%= order.ordered_at %>"></time></p>
+      </div>
+      <div class="expanded-order">
+        <table>
+          <tr>
+            <th class="table-heads" id="qnty">qty</th>
+            <th class="table-heads">item</th>
+            <th class="table-heads">price</th>
+          </tr>
+          <% let total = 0 %>
+          <% for (const food of order.foods) { %>
+            <tr>
+              <td class="centered-handwriting"><%= food.food_qty %></td>
+              <td><%= food.food_name %></td>
+              <td class="centered-handwriting"></td>
+            </tr>
+            <% total += food.price * food.food_qty %>
+          <% } %>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="subtotal">subtotal</td>
+            <td class="centered-handwriting"><%= (order.total_cost /100).toFixed(2) %>$</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="tax">tax</td>
+            <% let tax = (order.total_cost /100 * 0.15).toFixed(2) %>
+            <td class="centered-handwriting"><%= tax %>$</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="total">total</td>
+            <td class="centered-handwriting"><%= (order.total_cost * 1.15 /100).toFixed(2) %>$</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <% } %>
+  </main>
+  <% include ./partials/_footer %>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </html>
