@@ -1,16 +1,20 @@
 <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Rancho|Quicksand:400,700&display=swap" rel="stylesheet">
 <header>
   <nav>
-    <ul>
-      <% if(user) { %>
+      <% if(user.id) { %>
         <!-- User Is Authenticated -->
-        <%= user.name %>
+        <form method='POST' action='/logout' class='form-inline my-2 my-lg-0'>
+          <span class='mr-2'><%= user.name %></span>
+          <button type='submit' class='btn btn-outline-dark my-2 my-sm-0'>Logout</button>
+        </form>
       <% } else { %>
-        <%= user.name %>
         <a href="Login" alt="login">Login</a>
       <% }%>
-    </ul>
     <h1>BURGERZ</h1>
-    <i class="fas fa-shopping-cart"></i>
+    <form method='POST' action='/' data-cart="">
+      <input name="cart" type="hidden" value="">
+      <button type="submit" id="checkout-btn"><i class="fas fa-shopping-cart"></i></button>
+    </form>
   </nav>
 </header>

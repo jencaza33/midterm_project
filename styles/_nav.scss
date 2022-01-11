@@ -1,5 +1,10 @@
 $header-height: 80px;
-$nav-color: yellow;
+$nav-color: #0c485a;
+$logo-font: 'Rancho', cursive;
+$secondary-font: 'Quicksand', sans-serif;
+$logo-color: #2cc8e4;
+$text-shadow-color: #FFF5E6;
+$secondary-text-color: #1F1E5E;
 
 nav {
   display: flex;
@@ -9,8 +14,18 @@ nav {
 
   width: 100%;
 
+  height: auto;
+  font-family: $secondary-font;
   h1 {
     display: inline-block;
+    padding-top: 7px;
+    font-family: $logo-font;
+    color: $logo-color;
+    text-shadow: 1px 1px $text-shadow-color;
+  }
+  span {
+    color: $secondary-text-color;
+    font-weight: 700;
   }
 }
 
@@ -18,6 +33,5 @@ header {
   position: fixed;
   width: 100%;
   height: $header-height;
-
   background-color: $nav-color;
 }
