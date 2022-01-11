@@ -14,7 +14,7 @@ const userRouter = (db) => {
 
   //GET /users/:id
   router.get('/:id', (req, res) => {
-    userQueries.getUserById(req.params.id)
+    userQueries.getUserById(db, req.params.id)
       .then((user) => {
         res.json(user);
       });
