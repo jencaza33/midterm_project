@@ -39,14 +39,25 @@ app.use(express.static("public"));
 const userRouter = require("./routes/user-router");
 const homepageRouter = require('./routes/homepage-router');
 const menuRouter = require('./routes/menu-router');
+const cartRouter = require('./routes/cart-router');
+const orderRouter = require('./routes/order-router');
+const adminRouter = require('./routes/admin-router');
+const loginRouter = require('./routes/login-router');
+
+
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: mount other resources here, using the same pattern above
 //pass the routers to express as middleware
-app.use("/users", userRouter);
-app.use("/", homepageRouter);
-app.use("/menu", menuRouter);
+app.use("/users", userRouter(db));
+app.use("/", homepageRouter(db));
+app.use("/menu", menuRouter(db));
+app.use("/cart", cartRouter(db));
+app.use("/order", orderRouter(db));
+app.use("/admin", adminRouter(db));
+app.use("/login", loginRouter(db));
 
 
 // Home page

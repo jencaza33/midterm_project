@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+const cartRouter = (db) => {
 
-const homepageRouter = (db) => {
-
-  //GET /
+  //GET /cart/
   router.get("/", (req, res) => {
-    res.render("index");
+    res.render("cart");
+  });
+
+  //POST /cart/
+  router.post("/", (req, res) => {
   });
 
   return router;
@@ -14,4 +17,4 @@ const homepageRouter = (db) => {
 };
 
 //export the router object
-module.exports = homepageRouter;
+module.exports = cartRouter;
