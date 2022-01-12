@@ -70,7 +70,8 @@ app.get("/", (req, res) => {
   //set cookie upon loading homepage to 1; need to attach to database later
   req.session["user_id"] = 1;
 
-  // assogm session object's user_id key to user variable in order to pass it to templateVars as a variable to be used on the front end
+
+  // assign session object's user_id key to user variable in order to pass it to templateVars as a variable to be used on the front end
   const user = req.session.user_id;
   const templateVars = { user };
 
