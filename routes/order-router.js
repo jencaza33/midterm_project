@@ -18,8 +18,8 @@ const orderRouter = (db) => {
         });
    });
 
-  return router;
 
+    return router;
 };
 
 module.exports = orderRouter;
