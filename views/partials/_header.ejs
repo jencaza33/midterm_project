@@ -1,20 +1,27 @@
-<link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Rancho|Quicksand:400,700&display=swap" rel="stylesheet">
+<html>
+
 <header>
-  <nav>
-      <% if(locals.users) { %>
-        <!-- User Is Authenticated -->
-        <form method='POST' action='/logout' class='form-inline my-2 my-lg-0'>
-          <span class='mr-2'><%= user.name %></span>
-          <button type='submit' class='btn btn-outline-dark my-2 my-sm-0'>Logout</button>
-        </form>
-      <% } else { %>
-        <a href="Login" alt="login">Login</a>
-      <% }%>
-    <h1>BURGERZ</h1>
-    <form method='POST' action='/' data-cart="">
-      <input name="cart" type="hidden" value="">
-      <button type="submit" id="checkout-btn"><i class="fas fa-shopping-cart"></i></button>
-    </form>
-  </nav>
+
+  <div class="navbars">
+    <span class="restaurant-name"><b>BURGERZ</b></span>
+    <div class="navbar-nav">
+        <a class="navbar-Food" href="/menu">Menu</a>
+        <a class="navbar-Features" href="/checkout">Checkout</a>
+
+          <div class="navbar-navee">
+          <form class="form-inline" action="/logout" method="POST">
+            <span style="margin-right: 1em">Logged In As: Mr.Joe Blow</span>
+            <button type="submit">Logout</button>
+          </form>
+          </div>
+
+          <div class="navbar-navee">
+            <a href="/login">Login</a>
+          </div>
+
+    </div>
+
+  </div>
 </header>
+
+</html>

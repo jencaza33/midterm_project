@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/signup.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
@@ -23,25 +23,30 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Sacramento&display=swap"
-    rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/doc/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/doc/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/doc/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <div class="heroImg">
-      <h1>Burgerz</h1>
-    </div>
-    <div class="headerButtons">
-      <a href="/order_menu">Our Menu</a>
-    </div>
-  </header>
+  <%- include _nav.ejs %>
+  <section id="guest-login">
+    <form action="/users/order_signup" method="POST">
+      <h2>WELCOME!</h2>
+      <div class="form-group">
+        <label for="name">User name</label>
+        <input type="name" class="form-control" id="username" name="username" aria-describedby="nameHelp"
+          placeholder="No name no Ordering!" required>
+      </div>
+      <div class="form-group">
+        <label for="phone number">Phone number</label>
+        <input type="tel" class="form-control" id="phone-number" placeholder="No Phone number no Ordering" name="phoneNumber" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn">BURGER ME!</button>
+      </div>
+    </form>
+  </section>
+
 
 
   <!-- Bootstrap JS -->
