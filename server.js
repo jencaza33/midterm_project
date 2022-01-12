@@ -37,7 +37,6 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 //import the routers
 const userRouter = require("./routes/user-router");
-const homepageRouter = require('./routes/homepage-router');
 const menuRouter = require('./routes/menu-router');
 const cartRouter = require('./routes/cart-router');
 const orderRouter = require('./routes/order-router');
@@ -49,7 +48,6 @@ const loginRouter = require('./routes/login-router');
 // Note: mount other resources here, using the same pattern above
 //pass the routers to express as middleware
 app.use("/users", userRouter(db));
-app.use("/", homepageRouter(db));
 app.use("/menu", menuRouter(db));
 app.use("/cart", cartRouter(db));
 app.use("/order", orderRouter(db));
@@ -60,11 +58,11 @@ app.use("/login", loginRouter(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/signup", (req, res) => {
-  res.render("_signup");
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
-app.post("/signup", (req, res) => {
+app.post("/", (req, res) => {
   console.log("User posted to signup");
   res.status(301).redirect("/");
 });
