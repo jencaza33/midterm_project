@@ -8,6 +8,13 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
+//Cookie configuration
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'user_id',
+  keys: ['a long long hard to crack key', 'a much longer key to crack']
+}));
+
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -37,7 +44,6 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 //import the routers
 const userRouter = require("./routes/user-router");
-const homepageRouter = require('./routes/homepage-router');
 const menuRouter = require('./routes/menu-router');
 const cartRouter = require('./routes/cart-router');
 const orderRouter = require('./routes/order-router');
@@ -49,7 +55,6 @@ const loginRouter = require('./routes/login-router');
 // Note: mount other resources here, using the same pattern above
 //pass the routers to express as middleware
 app.use("/users", userRouter(db));
-app.use("/", homepageRouter(db));
 app.use("/menu", menuRouter(db));
 app.use("/cart", cartRouter(db));
 app.use("/order", orderRouter(db));
@@ -60,13 +65,24 @@ app.use("/login", loginRouter(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/signup", (req, res) => {
-  res.render("_signup");
+app.get("/", (req, res) => {
+
+  //set cookie upon loading homepage to 1; need to attach to database later
+  req.session["user_id"] = 1;
+
+
+  // assign session object's user_id key to user variable in order to pass it to templateVars as a variable to be used on the front end
+  const user = req.session.user_id;
+  const templateVars = { user };
+
+  res.render("index", templateVars);
+
 });
 
-app.post("/signup", (req, res) => {
+app.post("/", (req, res) => {
   console.log("User posted to signup");
   res.status(301).redirect("/");
+
 });
 
 app.listen(PORT, () => {
