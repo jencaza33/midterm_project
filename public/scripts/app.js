@@ -16,7 +16,7 @@ const addCart = function (id, name, description, price, picture_url) {
   products.push({ 'productId': id, 'productName': name, 'productDescription': description, 'productUnitPrice': price, 'productThumbnail': picture_url });
 
   localStorage.setItem('products', JSON.stringify(products));
-}
+};
 
 const createMenu = function (menu_items) {
   const $body = $(document.body);
