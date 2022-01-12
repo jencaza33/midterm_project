@@ -128,21 +128,21 @@ app.post("/checkout", (req, res) => {
 
   // Send SMS to customer through Twilio
   client.messages
-  .create({
+    .create({
       body: 'Thank you for ordering from Cravings. Your order will be ready in 10 min.',
       from: process.env.TWILIO_MOBILE,  // from TWilio phone
       to:  `+1${req.body.phone}`//`+${document.getElementById('phone').value}`   // put your phone to test it
-  })
-  .then(message => {
-    console.log(message.sid)
-    const phone = req.body.phone;
-    console.log('phone', phone);
-  })
-  .catch(err => {
-    console.log('error', error);
-    res.redirect('/');
-  })
-  .done();
+    })
+    .then(message => {
+      console.log(message.sid)
+      const phone = req.body.phone;
+      console.log('phone', phone);
+    })
+    .catch(err => {
+      console.log('error', error);
+      res.redirect('/');
+    })
+    .done();
 
   // res.redirect("/");
   req.session = null;
