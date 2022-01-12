@@ -1,0 +1,64 @@
+#menu {
+  .browse-all,
+  #menu-items {
+      display: grid;
+      grid-gap: 2em;
+      margin-left: 4em;
+      h3 {
+          margin-left: 3.5em;
+          margin-top: 3em;
+      }
+      .browse-all-img {
+          .items {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-transform: capitalize;
+              width: 70%;
+              :nth-child(2) {
+                  margin-top: 1em;
+              }
+              .afterSignUp {
+                  visibility: visible;
+              }
+              .beforeSignUp {
+                  visibility: hidden;
+              }
+              .item-info {
+                  margin-top: 1em;
+                  text-align: center;
+                  line-height: 25px;
+              }
+              img {
+                  width: 100%;
+              }
+          }
+      }
+  }
+  .items img:hover,
+  .items img:focus-within {
+      border: 5px solid #f6d2d8;
+  }
+}
+
+$btn-background: white;
+$btn-border: #E6C5CB;
+$btn-color: black;
+
+@mixin button-variant($background, $border, $color) {
+  background-color: $btn-background;
+  border: 4px solid $btn-border;
+  color: black;
+
+  &:hover {
+      border: 2px solid $btn-background;
+      background-color: $btn-border;
+      color: $btn-background;
+  }
+}
+
+.btn {
+      @include button-variant($btn-background, $btn-border, $btn-color);
+      box-shadow: rgb(35, 9, 107) 1px 1px 8px;
+}
