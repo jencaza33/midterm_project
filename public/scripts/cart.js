@@ -21,7 +21,7 @@ $(() => {
       </div>
                 `
       $("#order-items").append(container);
-      total = total + parseFloat(obj.productUnitPrice)
+      total = total + parseFloat(obj.productUnitPrice);
       $(".totals-value").html(total);
     }
   }
@@ -33,8 +33,8 @@ $(() => {
     $('.totals-value').html(0);
 
     localStorage.clear();
-  })
+  });
 
   populateCart();
   removeItem();
-})
+});
