@@ -44,9 +44,6 @@ const orderRouter = require('./routes/order-router');
 const adminRouter = require('./routes/admin-router');
 const loginRouter = require('./routes/login-router');
 
-
-
-
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: mount other resources here, using the same pattern above
