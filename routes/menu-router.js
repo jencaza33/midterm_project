@@ -20,9 +20,10 @@ const menuRouter = (db) => {
 
     // assign session object's user_id key to user variable in order to pass it to templateVars as a variable to be used on the front end along with result of database query
     const user = req.session.user_id;
-    const templateVars = { user, allFood };
+    // const templateVars = { user, allFood };
 
-    res.render("new-order", templateVars);
+    res.json({allFood});
+    // res.render("new-order", templateVars);
     })
     .catch(err => {
     res
