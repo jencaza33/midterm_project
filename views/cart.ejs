@@ -2,98 +2,51 @@
 <html lang="en">
 
 <head>
-  <title>BURGERZ - Cart</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Burgerz Order Page</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
 
-  <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/cart.js"></script>
+  <script type="text/javascript" src="/scripts/checkout.js"></script>
 
-
-  <!-- <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive&display=swap" rel="stylesheet"> -->
-
-  <script type="text/javascript" src="/vendor/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-
-  <!-- Font Awesome External JS-->
-  <script src="https://kit.fontawesome.com/1452ad3553.js" crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <% include ./partials/_header %>
-  <main>
-
-    <% if (cart.length > 0) { %>
-    <div class="order-summary-containter">
-      <form method='POST' action='/orders'>
-        <h1>Cart</h1>
-        <table>
-          <tr>
-            <th class="table-heads" id="qnty">qty</th>
-            <th class="table-heads">item</th>
-            <th class="table-heads">price</th>
-          </tr>
-          <!-- </table> -->
-          <% let total = 0 %>
-          <% for (const food of cart) { %>
-          <!-- <table> -->
-          <tr>
-            <td class="centered-handwriting"><%= food.qty %></td>
-            <td><%= food.name %></td>
-            <td class="centered-handwriting"><%= (food.price * food.qty /100).toFixed(2) %></td>
-          </tr>
-          <% total += food.price * food.qty %>
-          <% } %>
-          <tr>
-            <td></td>
-            <td class="centered-handwriting">Thank you!! xox</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="subtotal">subtotal</td>
-            <td class="centered-handwriting"><%= (total/100).toFixed(2) %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="tax">tax</td>
-            <% let tax = (total /100 * 0.15).toFixed(2) %>
-            <td class="centered-handwriting"><%= tax %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="total">total</td>
-            <td class="centered-handwriting"><%= (total * 1.15 /100).toFixed(2) %></td>
-          </tr>
-          <input name="cart" type="hidden" value="<%= JSON.stringify(cart) %>">
-        </table>
-        <div id="button-box">
-          <button type="submit" value="">Confirm</button>
+  <%- include _nav.ejs %>
+    <main id="cart">
+      <div id="orderCfmMsg">
+        <!-- another order confirmation message in the cart if client pressed 'return' on the /checkout, can still see message -->
+      </div>
+      <h2><span class="cart-of-username">Your</span> Cart</h2>
+      <section id="order-items">
+      </section>
+      <div class="totals">
+        <div class="totals-item totals-item-total">
+          <label>Grand Total</label>
+          <div class="totals-value" id="cart-total"></div>
+          <a href="/checkout"><button class="checkout">Checkout</button></a>
+          <button id="clear-cart">Clear Cart</button>
         </div>
-        <!-- <%= console.log("something to send!", cart) %> -->
-      </form>
-    </div>
-    <% } else { %>
-    <div class="empty-cart">
-      <p>Your cart is empty...</p>
-      <img class="crying-dog" src='src/images/misc/crying_hotdog.png'>
-    </div>
-    <% } %>
-    <!-- <%= console.log(cart) %> -->
-  </main>
-  <% include ./partials/_footer %>
+      </div>
+    </main>
+
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </html>
