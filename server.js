@@ -116,20 +116,20 @@ app.post("/checkout", (req, res) => {
   // Send SMS to restaurant through Twilio
   //Message from twilio to restaurant
   client.messages
-  .create({
-      body: 'You have a new order. Please check your order in our website.Cravings Team.',
+    .create({
+      body: 'You have a new order. Please check your order in our website. Burgerz Team.',
       from: process.env.TWILIO_MOBILE,
       to: '+1'
       //Please put in a working phone number in the above, in the format: '+16470000000'
-  })
-  .then(message => console.log(message.sid))
-  .catch(console.error)
-  .done();
+    })
+    .then(message => console.log(message.sid))
+    .catch(console.error)
+    .done();
 
   // Send SMS to customer through Twilio
   client.messages
     .create({
-      body: 'Thank you for ordering from Cravings. Your order will be ready in 10 min.',
+      body: 'Thank you for ordering from Burgerz. Your order will be ready in 20 min.',
       from: process.env.TWILIO_MOBILE,  // from TWilio phone
       to:  `+1${req.body.phone}`//`+${document.getElementById('phone').value}`   // put your phone to test it
     })
