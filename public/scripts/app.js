@@ -47,8 +47,8 @@ const renderMenu = function (items) {
   // console.log(items);
   items.forEach((menu_items) => {
     containerMenu.append(createMenu(menu_items));
-  })
-}
+  });
+};
 
 $(() => {
   $.ajax({
@@ -56,5 +56,5 @@ $(() => {
     url: "/menu_items"
   }).done((response) => {
     renderMenu(response.menu_items);
-  })
+  });
 });

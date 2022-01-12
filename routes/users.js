@@ -27,25 +27,25 @@ module.exports = (db) => {
 
   // Create a new user
   router.post('/order_signup', (req, res) => {
-      const addUser = function (user) {
-        return db
-          .query(`INSERT INTO users (name, phone, is_restaurant_crew)
+    const addUser = function(user) {
+      return db
+        .query(`INSERT INTO users (name, phone, staff)
             VALUES ($1, $2, $3)
-            RETURNING *`, [user.username, user.phoneNumber, false])
-          .then((result) => {
-            req.session.user_id = result.rows[0].id;
-            return result.rows[0];
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
-      }
-      const user = req.body;
-      addUser(user).then((newUser) => {
-        req.session.user_id = newUser.id;
-        res.redirect("/cart");
-      })
-    })
+            RETURNING *`, [user.name, user.phone, false])
+        .then((result) => {
+          req.session.user_id = result.rows[0].id;
+          return result.rows[0];
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    };
+    const user = req.body;
+    addUser(user).then((newUser) => {
+      req.session.user_id = newUser.id;
+      res.redirect("/cart");
+    });
+  });
 
     // router.get("/order_index", (req, res) => {
     //   const getUserWithPhone = function (phone) {

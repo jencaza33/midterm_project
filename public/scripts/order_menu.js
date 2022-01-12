@@ -1,8 +1,8 @@
 $(() => {
-  $('#add-to-cart').click(function () {
+  $('#add-to-cart').click(function() {
     console.log('click');
-  })
-})
+  });
+});
 
 
 // const e = require("express");
