@@ -107,7 +107,7 @@ const client = require('twilio')(accountSid, authToken);
 // Checkout page
 app.get("/checkout", (req, res) => {
   res.render("checkout");
-})
+});
 
 app.post("/checkout", (req, res) => {
   console.log(req.params);
@@ -134,7 +134,7 @@ app.post("/checkout", (req, res) => {
       to:  `+1${req.body.phone}`//`+${document.getElementById('phone').value}`   // put your phone to test it
     })
     .then(message => {
-      console.log(message.sid)
+      console.log(message.sid);
       const phone = req.body.phone;
       console.log('phone', phone);
     })
@@ -146,7 +146,7 @@ app.post("/checkout", (req, res) => {
 
   // res.redirect("/");
   req.session = null;
-})
+});
 
 
 

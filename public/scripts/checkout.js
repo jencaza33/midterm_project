@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $("#submit").on('click', function (event) {
+  $("#submit").on('click', function(event) {
     event.preventDefault();
     let name = $("#name").val();
     let phone = $("#phone").val();
@@ -12,12 +12,12 @@ $(document).ready(function () {
         name,
         phone
       }
-    })
-  })
-  $("#submit").on('click', function (event) {
+    });
+  });
+  $("#submit").on('click', function(event) {
     event.preventDefault();
     let name = $("#name").val();
     $('#orderingMsg').empty();
-    $('#orderingMsg').append(`Hey ${name}, thank you for ordering from Cravings. Your order will be ready in 10 min.`)
-  })
+    $('#orderingMsg').append(`Hey ${name}, thank you for ordering from Burgerz. Your order will be ready in 20 min.`)
+  });
 });

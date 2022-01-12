@@ -1,5 +1,5 @@
 // Client facing scripts here
-const addCart = function (id, name, description, unitPrice, thumbnail) {
+const addCart = function(id, name, description, unitPrice, thumbnail) {
   console.log('id', id);
   console.log('unitPrice', unitPrice);
   console.log('description', name);
@@ -38,8 +38,8 @@ const createMenu = function (menu_items) {
       </div>
   </div>
 </div>
-  `)
-}
+  `);
+};
 
 
 const renderMenu = function (items) {
