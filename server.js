@@ -49,19 +49,33 @@ const usersRoutes = require("./routes/users");
 const ordersRoutes = require("./routes/orders");
 const menu_itemsRoutes = require("./routes/menu_items");
 const order_itemsRoutes = require("./routes/order_items");
+//
+const userRouter = require("./routes/user-router");
+const menuRouter = require('./routes/menu-router');
+const cartRouter = require('./routes/cart-router');
+const orderRouter = require('./routes/order-router');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
-// app.use("/api/orders", ordersRoutes(db));
 app.use("/menu_items", menu_itemsRoutes(db));
 app.use("/order_items", order_itemsRoutes(db));
+//
+app.use("/users", userRouter(db));
+app.use("/order_menu", menuRouter(db));
+app.use("/cart", cartRouter(db));
+app.use("/order", orderRouter(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file! Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
+
+   //set cookie upon loading homepage to 1; need to attach to database later
+   req.session["user_id"] = 1;
+
+  // assign session object's user_id key to user variable in order to pass it to templateVars as a variable to be used on the front end
   const user = req.session.user_id;
   const templateVars = { user };
   res.render("index", templateVars);
@@ -70,22 +84,10 @@ app.get("/", (req, res) => {
 app.get("/order_signup", (req, res) => {
   const templateVars = { user: null };
   res.render("order_signup", templateVars);
+
 });
 
-app.get("/order_menu", (req, res) => {    ///need to change (for order_items) the name of the endpoint accordingly our routes above
-  const user = req.session.user_id;
-  const templateVars = { user };
-  res.render("order_menu", templateVars);
-})
 
-app.get("/cart", (req, res) => {
-  const user = req.session.user_id;
-  const templateVars = { user };
-  if (!user) {
-    return res.redirect('/order_signup');
-  }
-  res.render("cart", templateVars);
-});
 
 
 

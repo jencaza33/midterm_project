@@ -1,4 +1,4 @@
-INSERT INTO orders (created_at, completed_at, is_complete, total_price)
+INSERT INTO orders (user_id, created_at, completed_at, is_complete, total_price)
 VALUES
 ('2022-01-01 14:24:20', '2022-01-01 14:49:20', true, 20),
 ('2022-01-01 16:05:20', '2022-01-01 16:50:20', true, 24),
