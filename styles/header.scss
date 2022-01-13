@@ -1,0 +1,48 @@
+// Landing page
+header {
+  width: 100%;
+  text-align: center;
+  .heroImg {
+     background-image: url("http://funfoodthailand.com/wp-content/uploads/2016/03/Burger-Restaurant-Design.jpg");
+     background-size: cover;
+     background-position: center center;
+     height: 100vh;
+     width: 100%;
+     color: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow: hidden;
+     h1 {
+      font-size: 50px;
+      text-transform: none;
+      font-family: 'Alfa Slab One', cursive;
+    }
+  }
+  .headerButtons {
+      margin: 2em auto;
+      width: 100%;
+      a {
+          margin: 20px;
+          border: 3px solid white;
+          border-radius: 8%;
+          padding: 1em 3em;
+          text-decoration: none;
+          box-shadow: 3px 3px 3px rgb(21, 3, 63);
+      }
+      :nth-child(1) {
+          background-color: #fff;
+          color: #000;
+          border: 3px solid #410a57;
+      }
+      :nth-child(2) {
+          background-color: #470b63;
+          color: #fff;
+      }
+      a:hover,
+      a:focus-within {
+          background-color: #55127c;
+          color: white;
+      }
+  }
+}
