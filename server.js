@@ -15,8 +15,6 @@ app.use(cookieSession({
   keys: ['a long long hard to crack key', 'a much longer key to crack']
 }));
 
-
-
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -54,6 +52,7 @@ const userRouter = require("./routes/user-router");
 const menuRouter = require('./routes/menu-router');
 const cartRouter = require('./routes/cart-router');
 const orderRouter = require('./routes/order-router');
+const checkoutRouter = require('./routes/checkout-router');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -65,6 +64,8 @@ app.use("/users", userRouter(db));
 app.use("/order_menu", menuRouter(db));
 app.use("/cart", cartRouter(db));
 app.use("/order", orderRouter(db));
+app.use("/checkout", checkoutRouter(db));
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -91,62 +92,6 @@ app.get("/order_signup", (req, res) => {
 
 // POST ADD TO CART BUTTON TO CHECKOUT CART (USING NEW PATH ORDER_ITEMS SO IT WON'T DISTURB ORDER_INDEX)
 
-
-
-// Twilio API
-
-
-const accountSid = process.env.TWILIO_SID;
-//need to ENV the Sid to prevent app from crashing
-
-const authToken = process.env.TWILIO_OAUTH;
-//need to ENV the OAUTH token to prevent app from crashing
-const client = require('twilio')(accountSid, authToken);
-
-
-// Checkout page
-app.get("/checkout", (req, res) => {
-  res.render("checkout");
-})
-
-app.post("/checkout", (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
-
-  // Send SMS to restaurant through Twilio
-  //Message from twilio to restaurant
-  client.messages
-    .create({
-      body: 'You have a new order. Please check your order in our website. Burgerz Team.',
-      from: process.env.TWILIO_MOBILE,
-      to: '+1'
-      //Please put in a working phone number in the above, in the format: '+16470000000'
-    })
-    .then(message => console.log(message.sid))
-    .catch(console.error)
-    .done();
-
-  // Send SMS to customer through Twilio
-  client.messages
-    .create({
-      body: 'Thank you for ordering from Burgerz. Your order will be ready in 20 min.',
-      from: process.env.TWILIO_MOBILE,  // from TWilio phone
-      to:  `+1${req.body.phone}`//`+${document.getElementById('phone').value}`   // put your phone to test it
-    })
-    .then(message => {
-      console.log(message.sid)
-      const phone = req.body.phone;
-      console.log('phone', phone);
-    })
-    .catch(err => {
-      console.log('error', err);
-      res.redirect('/');
-    })
-    .done();
-
-  // res.redirect("/");
-  req.session = null;
-})
 
 
 
