@@ -89,8 +89,6 @@ app.get("/order_signup", (req, res) => {
 
 
 
-
-
 // POST ADD TO CART BUTTON TO CHECKOUT CART (USING NEW PATH ORDER_ITEMS SO IT WON'T DISTURB ORDER_INDEX)
 
 
@@ -141,7 +139,7 @@ app.post("/checkout", (req, res) => {
       console.log('phone', phone);
     })
     .catch(err => {
-      console.log('error', error);
+      console.log('error', err);
       res.redirect('/');
     })
     .done();

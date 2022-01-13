@@ -35,6 +35,20 @@ $(() => {
     localStorage.clear();
   });
 
+    $(".checkout").on("click", function(event) {
+
+      let products = JSON.parse(localStorage.getItem('products'));
+
+      $.post('/checkout', {data: products}, (response) => {
+        console.log("order created")
+      })
+      // get all items from local storeage
+      // encode
+      // send back to checkout endpoint
+    })
+
+
+
   populateCart();
   removeItem();
 });
