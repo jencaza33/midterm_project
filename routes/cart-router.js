@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const helperQueries = require('../lib/helper-queries');
+
+const cartRouter = (db) => {
 
   //GET /cart/
   router.get("/", (req, res) => {
@@ -75,13 +76,13 @@ const helperQueries = require('../lib/helper-queries');
     // }
 
     console.log(req.session);
-    return router;
 
   });
 
 
+  return router;
 
-
+};
 
 //export the router object
 module.exports = cartRouter;
