@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
+<<<<<<< HEAD
 
 const cartRouter = (db) => {
+=======
+>>>>>>> 2c5b75ef9035e16521965a2e5de39cb79f250a42
 
+const cartRouter = (db) => {
   //GET /cart/
   router.get("/", (req, res) => {
     const user_id = req.session.user_id;
@@ -76,6 +80,7 @@ const cartRouter = (db) => {
     // }
 
     console.log(req.session);
+<<<<<<< HEAD
 
   });
 
@@ -83,6 +88,15 @@ const cartRouter = (db) => {
   return router;
 
 };
+=======
+
+
+  });
+
+  return router;
+};
+
+>>>>>>> 2c5b75ef9035e16521965a2e5de39cb79f250a42
 
 //export the router object
 module.exports = cartRouter;
