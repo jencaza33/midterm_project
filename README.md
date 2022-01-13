@@ -7,7 +7,7 @@ Once the order is created, the restaurant will get a notification for the new or
 We use Twilio as our API to implement SMS communication from the website to customers and the Burgerz restaurant.
 ## Final Product
 *Landing page*
-!["BURGERZ Homepage"]()
+!["BURGERZ Homepage"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Homepage.png?raw=true)
 *Menu*
 !["Menu page"]()
 *Cart page*
