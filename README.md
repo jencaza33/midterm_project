@@ -9,11 +9,11 @@ We use Twilio as our API to implement SMS communication from the website to cust
 *Landing page*
 !["BURGERZ Homepage"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Homepage.png?raw=true)
 *Menu*
-!["Menu page"]()
+!["Menu page"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Menu.gif?raw=true)
 *Cart page*
-!["Cart page"]()
+!["Cart page"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/cart.png?raw=true)
 *Checkout page*
-!["Checkout page"]()
+!["Checkout page"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Checkout.png?raw=true)
 ## Getting Started
 1. Make new Twilio acount in https://www.twilio.com/ and get your Twilio SID, Token and phone number
 2. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
