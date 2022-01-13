@@ -1,15 +1,20 @@
 // Client facing scripts here
-const addCart = function (id, name, description, unitPrice, thumbnail) {
+const addCart = function (id, name, description, price, picture_url) {
+  alert(id + name + "-" + description);
   console.log('id', id);
-  console.log('unitPrice', unitPrice);
-  console.log('description', name);
+  console.log('Price', price);
+  console.log('name', name);
   console.log('description', description);
-  console.log('description', thumbnail);
+  console.log('thumbnail', picture_url);
+
   let products = [];
+
   if (localStorage.getItem('products')) {
     products = JSON.parse(localStorage.getItem('products'));
   }
-  products.push({ 'productId': id, 'productName': name, 'productDescription': description, 'productUnitPrice': unitPrice, 'productThumbnail': thumbnail });
+
+  products.push({ 'productId': id, 'productName': name, 'productDescription': description, 'productUnitPrice': price, 'productThumbnail': picture_url });
+
   localStorage.setItem('products', JSON.stringify(products));
 }
 
@@ -22,15 +27,15 @@ const createMenu = function (menu_items) {
 <div class="browse-all">
   <div class="browse-all-img">
       <div class="items item1">
-          <img src="${menu_items.thumbnail_url}"
+          <img src="${menu_items.picture_url}"
           alt="${menu_items.name}" width="300">
           <div class="item-info">
           <p>${menu_items.name}</p>
           <p>${menu_items.description}</p>
-          <p>$${menu_items.unit_price}</p>
+          <p>$${menu_items.price}</p>
           </div>
           <div class="buttons ${isSignIn ? 'afterSignUp' : 'beforeSignUp'}">
-            <button class="btn" onclick="addCart(${menu_items.id}, \'${menu_items.name}\', \'${menu_items.description}\', ${menu_items.unit_price}, \'${menu_items.thumbnail_url}\')">
+            <button class="btn" onclick="addCart(${menu_items.id}, \'${menu_items.name}\', \'${menu_items.description}\', ${menu_items.price}, \'${menu_items.picture_url}\')">
               <span>Add to cart</span>
             </button>
             <input type="hidden" name="item" value="${menu_items.id}">
@@ -40,7 +45,6 @@ const createMenu = function (menu_items) {
 </div>
   `)
 }
-
 
 const renderMenu = function (items) {
   const containerMenu = $('#menu-items');

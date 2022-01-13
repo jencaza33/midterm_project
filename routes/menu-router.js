@@ -28,6 +28,23 @@ const menuRouter = (db) => {
 
 });
 
+//POST /order_menu - Sets the cart value
+// router.post("/", (req, res) => {
+//   const user_id = req.session.user_id;
+
+//   if (user_id) {
+//     const cartValue = req.body.cart;
+//     console.log(cartValue);
+
+//     req.session.cart = cartValue;
+//     res.redirect('/cart');
+
+//   } else {
+//     const templateVars = user_id;
+//     res.render("order_signup", templateVars);
+//   }
+// });
+
   return router;
 
 };
