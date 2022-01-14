@@ -4,9 +4,11 @@
       display: grid;
       grid-gap: 2em;
       margin-left: 4em;
+      font-family: "Roboto", cursive;
       h3 {
           margin-left: 3.5em;
           margin-top: 3em;
+          font-family: "Roboto", cursive;
       }
       .browse-all-img {
           .items {
@@ -43,7 +45,7 @@
 }
 
 $btn-background: white;
-$btn-border: #E6C5CB;
+$btn-border: #3c1a5c;
 $btn-color: black;
 
 @mixin button-variant($background, $border, $color) {
