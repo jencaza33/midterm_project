@@ -1,6 +1,6 @@
 // Client facing scripts here
 const addCart = function (id, name, description, price, picture_url) {
-  alert(id + name + "-" + description);
+  alert("You have added an item!");
   console.log('id', id);
   console.log('Price', price);
   console.log('name', name);
