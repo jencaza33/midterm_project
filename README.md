@@ -14,6 +14,11 @@ We use Twilio as our API to implement SMS communication from the website to cust
 !["Cart page"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/cart.png?raw=true)
 *Checkout page*
 !["Checkout page"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Checkout.png?raw=true)
+*Customer Notification*
+!["Customer Notification"]()
+*Restaurant Notification*
+!["Restaurant Notifcation"]()
+
 ## Getting Started
 1. Make new Twilio acount in https://www.twilio.com/ and get your Twilio SID, Token and phone number
 2. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
