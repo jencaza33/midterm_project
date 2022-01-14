@@ -15,9 +15,9 @@ We use Twilio as our API to implement SMS communication from the website to cust
 *Checkout page*
 !["Checkout page"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Checkout.png?raw=true)
 *Customer Notification*
-!["Customer Notification"]()
+!["Customer Notification"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Customer_not.png?raw=true)
 *Restaurant Notification*
-!["Restaurant Notifcation"]()
+!["Restaurant Notifcation"](https://github.com/jencaza33/midterm_project/blob/master/public/src/images/Restaurant_not.png?raw=true)
 
 ## Getting Started
 1. Make new Twilio acount in https://www.twilio.com/ and get your Twilio SID, Token and phone number
